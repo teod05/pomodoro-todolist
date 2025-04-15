@@ -6,7 +6,7 @@ import About from './About';
 import WhyPomodoro from './WhyPomodoro';
 
 // API pagrindinis URL
-const API_Base = 'http://localhost:3000/todo'
+const API_Base = import.meta.env.VITE_API_URL || 'http://localhost:3000/todo';
 
 // Pagrindinis komponentas su užduočių sąrašu
 function Main() {
@@ -29,7 +29,7 @@ function Main() {
       alert("Please enter a task!")
       return
     }
-    const data = await fetch(API_Base + "/new", {
+    const data = await fetch(API_Base + "/todo/new", {
       method: "POST",
       headers: {
       "content-type": "application/json"
@@ -45,7 +45,7 @@ function Main() {
   // Ištrinti užduotį
   const deleteTodo = async(id) => {
     try{
-        const response = await fetch (API_Base + '/delete/' + id, {
+        const response = await fetch (API_Base + '/todo/delete/' + id, {
             method: 'DELETE'
         })
         if(!response.ok){
@@ -60,7 +60,7 @@ function Main() {
 
   // Gauti visas užduotis
   const getTodos = () => {
-    fetch(API_Base)
+    fetch(API_Base + '/todo')
     .then(res => res.json())
     .then(data => { console.log(data); setItem(data)})
     .catch(err => console.log(err))
