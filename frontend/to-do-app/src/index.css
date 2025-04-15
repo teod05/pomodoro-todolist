@@ -1,0 +1,555 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+/* Pagrindiniai stiliai */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Base styles */
+:root {
+    --primary-color: #3182ce;
+    --text-color: #2d3748;
+    --bg-color: #ffffff;
+    --border-color: #e2e8f0;
+    --hover-color: #2c5282;
+}
+
+.dark {
+    --primary-color: #63b3ed;
+    --text-color: #f7fafc;
+    --bg-color: #1a202c;
+    --border-color: #4a5568;
+    --hover-color: #90cdf4;
+}
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f0fff4;
+    color: #2f855a;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Navigacijos stiliai */
+.app-header {
+    background-color: #38a169;
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    font-size: 1.1rem;
+}
+
+.nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Pagrindinio konteinerio stiliai */
+.app-container {
+  width: 100%;
+  max-width: 480px;
+  padding: 2rem;
+}
+
+/* Užduočių sąrašo stiliai */
+.todo-container {
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+  padding: 2rem;
+}
+
+.app-title {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #38a169;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+/* Įvesties grupės stiliai */
+.input-group {
+  display: flex;
+  margin-bottom: 1.5rem;
+}
+
+.task-input {
+  flex-grow: 1;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px 0 0 8px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.task-input:focus {
+  border-color: #38a169;
+}
+
+.add-button {
+  background-color: #38a169;
+  color: #ffffff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 0 8px 8px 0;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  display: flex;
+  align-items: center;
+}
+
+.add-button:hover {
+  background-color: #2f855a;
+  transform: translateY(-2px);
+}
+
+.button-text {
+  display: none;
+}
+
+.button-icon {
+  font-size: 1.5rem;
+}
+
+/* Užduočių sąrašo stiliai */
+.todo-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.todo-item {
+  background-color: #f7fafc;
+  border-radius: 8px;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.todo-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.todo-checkbox {
+  margin-right: 1rem;
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+.todo-text {
+  flex-grow: 1;
+  font-size: 1rem;
+  color: #2d3748;
+}
+
+.delete-button, .edit-button {
+  background: none;
+  border: none;
+  color: #e53e3e;
+  cursor: pointer;
+  font-size: 1.4rem;
+  transition: color 0.3s ease;
+  margin: 5px;
+}
+
+.delete-button:hover {
+  color: #c53030;
+}
+
+@media (min-width: 640px) {
+  .button-text {
+    display: inline;
+  }
+
+  .button-icon {
+    display: none;
+  }
+}
+
+.edit-button {
+  color: #4a5568;
+}
+
+.edit-button:hover {
+  background-color: #edf2f7;
+  color: #2d3748;
+}
+
+.edit-input {
+  flex-grow: 1;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: 2px solid #3182ce;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.edit-input:focus {
+  border-color: #2c5282;
+  background-color: #ebf8ff;
+}
+
+.save-button, .cancel-button {
+  background-color: #3182ce;
+  color: #ffffff;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-left: 0.5rem;
+  margin-bottom: 4px;
+  width: 100px; /* Just Sets a fixed width */
+  text-align: center; /* Centers it */
+}
+
+.save-button:hover {
+  background-color: #2c5282;
+  transform: translateY(-2px);
+}
+
+.cancel-button {
+  background-color: #e53e3e;
+}
+
+.cancel-button:hover {
+  background-color: #c53030;
+  transform: translateY(-2px);
+}
+
+
+.todo-item.edit-mode {
+  background-color: #edf2f7;
+  border: 2px solid #3182ce;
+  padding: 1rem;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Pomodoro laikmačio stiliai */
+.pomodoro-container {
+    max-width: 400px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+    text-align: center;
+}
+
+.pomodoro-container h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #38a169;
+    margin-bottom: 1rem;
+}
+
+.pomodoro-container h2.work-mode {
+    color: #38a169;
+}
+
+.pomodoro-container h2.break-mode {
+    color: #38a169;
+}
+
+.timer-display {
+    font-size: 3.5rem;
+    font-weight: bold;
+    margin: 1.5rem 0;
+    color: #2f855a;
+    font-family: 'Poppins', sans-serif;
+}
+
+.timer-controls {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin: 1.5rem 0;
+}
+
+.timer-controls button {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: #38a169;
+    color: white;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.timer-controls button:hover:not(:disabled) {
+    background-color: #2f855a;
+    transform: translateY(-2px);
+}
+
+.timer-controls button:disabled {
+    background-color: #e2e8f0;
+    color: #a0aec0;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.timer-settings {
+    margin-top: 2rem;
+    text-align: left;
+    background-color: #f7fafc;
+    padding: 1.5rem;
+    border-radius: 8px;
+}
+
+.setting {
+    margin-bottom: 1.5rem;
+}
+
+.setting:last-child {
+    margin-bottom: 0;
+}
+
+.setting label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #4a5568;
+    font-weight: 500;
+}
+
+.setting input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.3s ease;
+    background-color: white;
+}
+
+.setting input:focus {
+    border-color: #38a169;
+}
+
+.setting input:disabled {
+    background-color: #f0f0f0;
+    cursor: not-allowed;
+    border-color: #e2e8f0;
+}
+
+/* Darbo ir pertraukos režimų stiliai */
+.work-mode {
+    color: #e74c3c;
+}
+
+.break-mode {
+    color: #2ecc71;
+}
+
+/* Atsakomybės atsisakymas */
+@media (max-width: 768px) {
+    .app-header nav {
+        gap: 2rem;
+        padding: 0 1rem;
+    }
+
+    .nav-link {
+        font-size: 1rem;
+        padding: 0.5rem;
+    }
+
+    .pomodoro-container,
+    .todo-container,
+    .about-container,
+    .why-pomodoro-container {
+        max-width: 90%;
+        margin: 1rem auto;
+        padding: 1.5rem;
+    }
+
+    .timer-display {
+        font-size: 2.5rem;
+    }
+}
+
+/* Antras breakpoint: Mobile devices (max-width: 480px) */
+@media (max-width: 480px) {
+    .app-header nav {
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+
+    .nav-link {
+        font-size: 0.9rem;
+        padding: 0.25rem 0.5rem;
+    }
+
+    .input-group {
+        flex-direction: column;
+    }
+
+    .add-button {
+        width: 100%;
+        margin-top: 0.5rem;
+    }
+
+    .timer-controls {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .timer-controls button {
+        width: 100%;
+    }
+
+    .timer-display {
+        font-size: 2rem;
+    }
+}
+
+/* About page stiliai */
+.about-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.about-content section {
+    margin-bottom: 2rem;
+}
+
+.about-content h2 {
+    color: #38a169;
+    margin-bottom: 1rem;
+}
+
+.about-content ul, .about-content ol {
+    padding-left: 1.5rem;
+}
+
+/* Why Pomodoro page stiliai */
+.why-pomodoro-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.why-pomodoro-content section {
+    margin-bottom: 2rem;
+}
+
+.why-pomodoro-content h2 {
+    color: #38a169;
+    margin-bottom: 1rem;
+}
+
+.why-pomodoro-content ul, .why-pomodoro-content ol {
+    padding-left: 1.5rem;
+}
+
+/* Settings page stiliai */
+.settings-container {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: var(--bg-color);
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.setting-section {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.setting-section:last-child {
+    border-bottom: none;
+}
+
+.setting-section h2 {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+}
+
+.setting-item {
+    margin-bottom: 1.5rem;
+}
+
+.setting-item label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+}
+
+.toggle-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.toggle-button {
+    padding: 0.5rem 1rem;
+    border: 2px solid var(--primary-color);
+    border-radius: 4px;
+    background-color: transparent;
+    color: var(--primary-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.toggle-button.active {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.setting-description {
+    font-size: 0.875rem;
+    color: var(--text-color);
+    opacity: 0.7;
+    margin-top: 0.5rem;
+}
+
+main {
+    margin-top: 4rem;
+    padding: 1rem;
+}
