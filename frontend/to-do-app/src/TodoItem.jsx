@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const API_Base = "http://localhost:3000/todo";
+const API_Base = import.meta.env.VITE_API_URL || "http://localhost:3000";
 
 function TodoItem(props) {
   const [isEditing, setIsEditing] = useState(false);
@@ -19,7 +19,7 @@ function TodoItem(props) {
     }
 
     try {
-      const response = await fetch(`${API_Base}/${props.id}`, {
+      const response = await fetch(`${API_Base}/todo/${props.id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

@@ -6,7 +6,7 @@ import About from './About';
 import WhyPomodoro from './WhyPomodoro';
 
 // API pagrindinis URL
-const API_Base = import.meta.env.VITE_API_URL || 'http://localhost:3000/todo';
+const API_Base = import.meta.env.VITE_API_URL || 'http://localhost:3000';
 
 // Pagrindinis komponentas su užduočių sąrašu
 function Main() {
